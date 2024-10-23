@@ -203,7 +203,41 @@
         <div class="container">
              <a href="https://www.youtube.com/@REGION42Life" target="_blank">
             <p>© 2024 REGION42 Life. Все права защищены.</p>
-           
+            <script>
+                // Функция для получения количества просмотров из localStorage
+                function getViewCount() {
+                    return localStorage.getItem('viewCount') || 0;
+                }
+        
+                // Функция для увеличения количества просмотров
+                function incrementViewCount() {
+                    let count = parseInt(getViewCount()) + 1;
+                    localStorage.setItem('viewCount', count);
+                    return count;
+                }
+        
+                // Обновление счетчика на странице
+                function updateViewCounter() {
+                    let count = incrementViewCount();
+                    document.getElementById('viewCounter').textContent = count;
+                }
+        
+                // Создание элемента счетчика
+                let counterElement = document.createElement('div');
+                counterElement.id = 'viewCounter';
+                counterElement.style.position = 'fixed';
+                counterElement.style.bottom = '10px';
+                counterElement.style.right = '10px';
+                counterElement.style.padding = '5px 10px';
+                counterElement.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+                counterElement.style.color = 'white';
+                counterElement.style.borderRadius = '5px';
+                counterElement.style.fontSize = '14px';
+                document.body.appendChild(counterElement);
+        
+                // Обновление счетчика при загрузке страницы
+                window.addEventListener('load', updateViewCounter);
+            </script>
             </div>
         </div>
     </footer>
